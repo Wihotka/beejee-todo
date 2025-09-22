@@ -54,6 +54,7 @@ services:
     container_name: todo_frontend
     environment:
       - VITE_API_URL=http://localhost:5001/api
+      - PORT=80
     ports:
       - "3000:80"
     depends_on:
