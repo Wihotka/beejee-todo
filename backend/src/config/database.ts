@@ -5,12 +5,16 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 const pool = new Pool({
-  connectionString: process.env.DATABASE_URL || process.env.DB_PASSWORD,
+  connectionString: process.env.DATABASE_URL,
   host: process.env.DB_HOST || 'localhost',
   port: parseInt(process.env.DB_PORT || '5432'),
   database: process.env.DB_NAME || 'todo_app',
   user: process.env.DB_USER || 'postgres',
   password: process.env.DB_PASSWORD || 'password',
+  // SSL configuration for production (Render PostgreSQL)
+  ssl: process.env.DATABASE_URL ? {
+    rejectUnauthorized: false
+  } : false,
 });
 
 export const initDatabase = async (): Promise<void> => {
