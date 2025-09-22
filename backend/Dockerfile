@@ -4,14 +4,14 @@ FROM node:18-alpine
 # Устанавливаем рабочую директорию
 WORKDIR /app
 
-# Копируем package.json и package-lock.json
-COPY package*.json ./
+# Копируем package.json и package-lock.json из backend директории
+COPY backend/package*.json ./
 
 # Устанавливаем все зависимости (включая dev для сборки)
 RUN npm install
 
-# Копируем исходный код
-COPY . .
+# Копируем исходный код из backend директории
+COPY backend/ .
 
 # Компилируем TypeScript
 RUN npm run build
