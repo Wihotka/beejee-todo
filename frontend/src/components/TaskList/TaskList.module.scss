@@ -1,0 +1,42 @@
+.content {
+  padding: 32px 0;
+}
+
+.taskList {
+  min-height: 300px;
+}
+
+.noTasks {
+  text-align: center;
+  padding: 64px 32px;
+  color: #666;
+  
+  p {
+    font-size: 18px;
+    margin: 0;
+  }
+}
+
+.errorMessage {
+  background: #fee;
+  color: #c33;
+  padding: 12px;
+  border-radius: 6px;
+  margin-bottom: 16px;
+  font-size: 14px;
+  border: 1px solid #fcc;
+}
+
+@media (max-width: 768px) {
+  .content {
+    padding: 16px 0;
+  }
+  
+  .noTasks {
+    padding: 48px 16px;
+    
+    p {
+      font-size: 16px;
+    }
+  }
+}

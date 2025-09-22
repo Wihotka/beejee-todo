@@ -1,0 +1,48 @@
+.loginContainer {
+  min-height: calc(100vh - 60px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px;
+}
+
+.loginCard {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  padding: 40px;
+  width: 100%;
+  max-width: 400px;
+}
+
+.title {
+  margin: 0 0 32px 0;
+  color: #333;
+  font-size: 24px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.form {
+  margin-bottom: 0;
+}
+
+.errorMessage {
+  background: #fee;
+  color: #c33;
+  padding: 12px;
+  border-radius: 6px;
+  margin-bottom: 16px;
+  font-size: 14px;
+  border: 1px solid #fcc;
+}
+
+@media (max-width: 768px) {
+  .loginContainer {
+    padding: 16px;
+  }
+  
+  .loginCard {
+    padding: 24px;
+  }
+}

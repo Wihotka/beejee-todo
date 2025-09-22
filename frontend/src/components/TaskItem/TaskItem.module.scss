@@ -1,0 +1,83 @@
+.taskItem {
+  margin-bottom: 16px;
+}
+
+.taskContent {
+  margin-bottom: 12px;
+}
+
+.taskHeader {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+}
+
+.username {
+  font-weight: 600;
+  color: #333;
+  font-size: 16px;
+}
+
+.email {
+  color: #666;
+  font-size: 14px;
+}
+
+.taskText {
+  color: #555;
+  line-height: 1.5;
+  font-size: 15px;
+  margin-bottom: 12px;
+}
+
+.editedLabel {
+  color: #999;
+  font-style: italic;
+  font-size: 12px;
+}
+
+.editForm {
+  margin-bottom: 12px;
+}
+
+.editButtons {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.taskActions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.checkboxLabel {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.checkboxText {
+  color: #666;
+
+  &.disabled {
+    color: #999;
+    cursor: not-allowed;
+  }
+}
+
+@media (max-width: 768px) {
+  .taskActions {
+    flex-direction: column;
+    gap: 8px;
+    align-items: stretch;
+  }
+
+  .editButtons {
+    justify-content: center;
+  }
+}
