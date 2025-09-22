@@ -1,0 +1,57 @@
+services:
+  # PostgreSQL Database
+  - type: pserv
+    name: todo-postgres
+    plan: free
+    envVars:
+      - key: POSTGRES_DB
+        value: todo_app
+      - key: POSTGRES_USER
+        value: postgres
+      - key: POSTGRES_PASSWORD
+        generateValue: true
+
+  # Backend API
+  - type: web
+    name: todo-backend
+    env: docker
+    dockerfilePath: ./backend/Dockerfile
+    plan: free
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DB_HOST
+        fromService:
+          type: pserv
+          name: todo-postgres
+          property: host
+      - key: DB_PORT
+        fromService:
+          type: pserv
+          name: todo-postgres
+          property: port
+      - key: DB_NAME
+        value: todo_app
+      - key: DB_USER
+        value: postgres
+      - key: DB_PASSWORD
+        fromService:
+          type: pserv
+          name: todo-postgres
+          property: password
+      - key: JWT_SECRET
+        generateValue: true
+    healthCheckPath: /api/auth/verify
+
+  # Frontend
+  - type: web
+    name: todo-frontend
+    env: docker
+    dockerfilePath: ./frontend/Dockerfile
+    plan: free
+    envVars:
+      - key: VITE_API_URL
+        fromService:
+          type: web
+          name: todo-backend
+          envVarKey: RENDER_EXTERNAL_URL

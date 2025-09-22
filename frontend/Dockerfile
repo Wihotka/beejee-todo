@@ -29,7 +29,7 @@ http { \
     sendfile on; \
     keepalive_timeout 65; \
     server { \
-        listen 80; \
+        listen $PORT; \
         server_name localhost; \
         location / { \
             root /usr/share/nginx/html; \
