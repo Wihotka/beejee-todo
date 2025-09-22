@@ -1,24 +1,15 @@
 services:
-  # PostgreSQL Database
-  - type: pserv
-    name: todo-postgres
-    runtime: postgresql
-    plan: free
-
   # Backend API
   - type: web
     name: todo-backend
-    env: docker
+    runtime: docker
     dockerfilePath: ./backend/Dockerfile
     plan: free
     envVars:
       - key: NODE_ENV
         value: production
       - key: DATABASE_URL
-        fromService:
-          type: pserv
-          name: todo-postgres
-          property: connectionString
+        value: postgresql://postgres:password@dpg-xxxxx-a.oregon-postgres.render.com/todo_app
       - key: JWT_SECRET
         generateValue: true
     healthCheckPath: /api/auth/verify
@@ -26,7 +17,7 @@ services:
   # Frontend
   - type: web
     name: todo-frontend
-    env: docker
+    runtime: docker
     dockerfilePath: ./frontend/Dockerfile
     plan: free
     envVars:
