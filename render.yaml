@@ -9,7 +9,7 @@ services:
       - key: NODE_ENV
         value: production
       - key: DATABASE_URL
-        value: postgresql://postgres:password@dpg-xxxxx-a.oregon-postgres.render.com/todo_app
+        value: postgresql://todo_postgres_i0ir_user:UuoIjpHz2J8LOneipj4WD4ziMPQaFjed@dpg-d38p84emcj7s738hae1g-a.oregon-postgres.render.com/todo_postgres_i0ir
       - key: JWT_SECRET
         generateValue: true
     healthCheckPath: /api/auth/verify
