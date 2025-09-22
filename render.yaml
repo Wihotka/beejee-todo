@@ -2,14 +2,8 @@ services:
   # PostgreSQL Database
   - type: pserv
     name: todo-postgres
+    runtime: postgresql
     plan: free
-    envVars:
-      - key: POSTGRES_DB
-        value: todo_app
-      - key: POSTGRES_USER
-        value: postgres
-      - key: POSTGRES_PASSWORD
-        generateValue: true
 
   # Backend API
   - type: web
@@ -20,25 +14,11 @@ services:
     envVars:
       - key: NODE_ENV
         value: production
-      - key: DB_HOST
+      - key: DATABASE_URL
         fromService:
           type: pserv
           name: todo-postgres
-          property: host
-      - key: DB_PORT
-        fromService:
-          type: pserv
-          name: todo-postgres
-          property: port
-      - key: DB_NAME
-        value: todo_app
-      - key: DB_USER
-        value: postgres
-      - key: DB_PASSWORD
-        fromService:
-          type: pserv
-          name: todo-postgres
-          property: password
+          property: connectionString
       - key: JWT_SECRET
         generateValue: true
     healthCheckPath: /api/auth/verify
